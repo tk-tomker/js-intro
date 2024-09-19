@@ -1,0 +1,26 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>JS Demo</title>
+
+</head>
+<body>
+    <p id="test"></p>
+    <form>
+        <input id="num1" type="number">
+        <br>
+        <button type="button" onclick"demofunction{}">Click Me</button>
+    </form>
+<script>
+    placetooutput= document.getElementById("test")
+    placetooutput.innerHTML="HELOOOO";
+    //doucment.write("hello")
+    function demofunction(){
+        var x = document.getElementById("num1").value;
+        y=x*x;
+        alert(y);
+        placetooutput.innerHTML=y;
+    }
+</script>
+</body>
+</html>
