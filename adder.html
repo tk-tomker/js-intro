@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <form type="number"></form>
-    <form type="submit"></form>
+    <form id="calc">
+        <label for="fnum">First Number:</label><br>
+        <input type="number" id="fnum" name="fnum"><br>
+        <label for="snum">Second Number:</label><br>
+        <input type="number" id="snum" name="snum">
+        <input type="submit" value="Submit">
+    </form>
+    <p id="result">The total value is: <span id="result"></span></p>
     <script>
-    let userObjectX = {};
-    let userInputX = prompt("Please Enter the first number to add")
-    userObjectX.data = userInputX;
-    let userObjectY = {};
-    let userInputY = prompt("Please Enter the second number to add:");
-    let userObjectY.data = userInputY;
-    let total = userInputX + userInputY;
-    document.write(total)
-</script>
+        document.getElementById('calc').addEventListener('submit', function(event) {
+            event.preventDefault()
+            const firstNum = parseFloat(document.getElementById("fnum").value);
+            const secondNum = parseFloat(document.getElementById("snum").value);
+            const sum = firstNum + secondNum;
+    
+            document.getElementById("result").innerText = sum;
+        });
+    </script>
 </body>
+
 </html>
