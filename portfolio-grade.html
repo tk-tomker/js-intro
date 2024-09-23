@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form id="gradeForm">
+        <label for="analysis">Analysis x/25:</label><br>
+        <input type="number" id="analysis" name="design" min="0" max="25"><br>
+        <label for="design">Design x/25:</label><br>
+        <input type="number" id="design" name="design" min="0" max="25"><br>
+        <label for="implementation">Implementation x/25:</label><br>
+        <input type="number" id="implementation" name="implementation" min="0" max="25"><br>
+        <label for="evaluation">Evaluation x/25:</label><br>
+        <input type="number" id="evaluation" name="evaluation" min="0" max="25"><br>
+        <input type="submit" value="Calculator Grade">
+    </form>
+    <p>Grade:<span id="grade"></span></p>
+    <p>Total Percentage:<span id="marks"></span>%</p>
+    <p><span id="away"></span>% away from the next grade!</p>
+    <script>
+       
+
+        document.getElementById('gradeForm').addEventListener('submit', function(event) {
+            event.preventDefault()
+            let analysis = parseInt(document.getElementById("analysis").value);
+            let implementation = parseInt(document.getElementById("implementation").value);
+            let evaluation = parseInt(document.getElementById("evaluation").value);
+            let design = parseInt(document.getElementById("design").value);
+
+            let percentage = analysis + implementation + evaluation + design;
+            
+            let grade = calculatorGrade(percentage);
+
+            document.getElementById("grade").innerText = grade;
+            document.getElementById("marks").innerText = percentage;
+        });
+
+        function calculatorGrade(percentage){
+            let grade="";
+
+            switch(true){
+                case (percentage <= 3):
+                    grade ="U"
+                    break;
+                case (percentage <= 12):
+                    grade = "G";
+                    break;
+                case (percentage <= 21):
+                    grade = "F";
+                    break;
+                case (percentage <= 30):
+                    grade ="E";
+                    break;
+                case (percentage <= 40):
+                    grade ="D";
+                    break;
+                case (percentage <= 53):
+                    grade = "C";
+                    break;
+                case (percentage <= 66):
+                    grade = "B";
+                    break;
+                case (percentage <= 79):
+                    grade = "A";
+                    break;
+                case (percentage <= 100):
+                    grade="A*";
+                    break;
+                default:
+                    grade ="Invalid";
+            }
+            return grade;
+        }
+    </script>
+</body>
+</html>
